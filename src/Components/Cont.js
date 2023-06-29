@@ -5,16 +5,17 @@ import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword ,sendEmailVerification,signInWithPopup,getRedirectResult ,GoogleAuthProvider  } from "firebase/auth";
 import Success from "./LoginSuccessfully";
+import Apiconfig from "../Apiconfig";
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD8yPTeR9Y01IIeyVsat1xnKX89DtC1Anc",
-    authDomain: "student-survy.firebaseapp.com",
-    databaseURL: "https://student-survy-default-rtdb.firebaseio.com",
-    projectId: "student-survy",
-    storageBucket: "student-survy.appspot.com",
-    messagingSenderId: "127338748956",
-    appId: "1:127338748956:web:56178e944078f3360593d9"
+    apiKey: Apiconfig.apiKey,
+    authDomain: Apiconfig.authDomain,
+    databaseURL: Apiconfig.databaseURL,
+    projectId: Apiconfig.projectId,
+    storageBucket: Apiconfig.storageBucket,
+    messagingSenderId: Apiconfig.messagingSenderId,
+    appId: Apiconfig.appId,
   };
 
     const app = initializeApp(firebaseConfig);
