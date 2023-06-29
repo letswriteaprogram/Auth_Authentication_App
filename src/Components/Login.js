@@ -38,7 +38,7 @@ function Login(props) {
                     <br/>         
                             <div className="form-group">
                                 <input
-                                type="text"
+                                type="password"
                                 name="password"
                                 className="form-control"
                                 placeholder="password"
