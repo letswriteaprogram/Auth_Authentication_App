@@ -3,7 +3,7 @@ import Login from "./Login";
 import Register from "./Rsgister";
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword ,sendEmailVerification,signInWithPopup,getRedirectResult ,GoogleAuthProvider  } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword ,sendEmailVerification,signInWithPopup ,GoogleAuthProvider  } from "firebase/auth";
 import Success from "./LoginSuccessfully";
 import Apiconfig from "../Apiconfig";
 
@@ -52,7 +52,6 @@ const firebaseConfig = {
                 .then((userCredential) => {
                     sendEmailVerification(auth.currentUser)
                     // Signed in 
-                    const user = userCredential.user;
                     this.setState({message:"Resistre Successfully",type:1},()=>{
                         event.target.email.value="";
                         event.target.password.value="";
@@ -61,7 +60,7 @@ const firebaseConfig = {
             })
                 .catch((error) => {
                     const errorCode = error.code;
-                    const errorMessage = error.message;
+                    // const errorMessage = error.message;
                     let ErrMess;
                     switch (errorCode) {
                         case "auth/weak-password":
@@ -91,7 +90,7 @@ const firebaseConfig = {
                     this.setState({message:"Emial is not varified yet",type:0})   
                 }
                 else{
-                this.setState({message:"Login Successfully",LoginSuccess:true, type:1},()=>{
+                this.setState({LoginSuccess:true,},()=>{
                     event.target.email.value="";
                     event.target.password.value="";
                 })
@@ -125,26 +124,19 @@ const firebaseConfig = {
         const auth = getAuth();
         signInWithPopup(auth, provider)
         .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
+            
             const user = result.user;
-            // IdP data available using getAdditionalUserInfo(result)
-            // ...
+
             if(result.user.emailVerified === true && user.email){
-                this.setState({message:"Login Successfully",LoginSuccess:true, type:1})   
+                this.setState({LoginSuccess:true,})   
             }
         }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
+            this.setState({message:error,type:0})
         });
+        }
+
+        ResteMessage=()=>{
+            this.setState({message:"",});
         }
 
 
@@ -157,7 +149,8 @@ const firebaseConfig = {
                        type={this.state.type}
                        message={this.state.message} 
                        Register={this.RsgistrationHandler}
-                       googlelogin={this.GoogleLoginHandler}></Register>}
+                       googlelogin={this.GoogleLoginHandler}
+                       resetMessage={this.ResteMessage}></Register>}
                 /> 
                 <Route path="login" 
                 element={
@@ -167,7 +160,8 @@ const firebaseConfig = {
                          type={this.state.type}
                          message={this.state.message}  
                          logIn={this.LogInHand}
-                         googlelogin={this.GoogleLoginHandler} />}
+                         googlelogin={this.GoogleLoginHandler} 
+                         resetMessage={this.ResteMessage }/>}
                  /> 
               </Routes>
             </Router>

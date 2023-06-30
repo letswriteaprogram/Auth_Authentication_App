@@ -53,7 +53,7 @@ function Login(props) {
                         </form>
                         <br/>
                         <center>
-                            <Link to={"/"}>creat</Link>
+                            <Link to={"/"}  onClick={props.resetMessage}>Create</Link>
                             <span> an account</span>
                         </center>
                     </div>

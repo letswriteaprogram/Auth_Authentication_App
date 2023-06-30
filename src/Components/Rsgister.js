@@ -66,7 +66,7 @@ function Register(props) {
                         <br/>
                         <center>
                         <span>have an account?</span>
-                         <Link to={"/login"}>Log in</Link>
+                         <Link to={"/login"} onClick={props.resetMessage}>Log in</Link>
                             
                         </center>
                     </div>

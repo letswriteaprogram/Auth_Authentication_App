@@ -1,4 +1,3 @@
-import './App.css';
 import Cont from './Components/Cont';
 
 function App() {
