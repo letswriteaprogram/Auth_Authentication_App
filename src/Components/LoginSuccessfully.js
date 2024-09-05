@@ -2,14 +2,11 @@ import React from "react";
 
 function Success() {
   return (
-    <>
-      <div className="container-fluid  m-5">
-        <div className="container card mt-2">
-        <h3 className="text-center p-5 m-5" style={{ color: "green" }}>You have Login Successfully </h3>
-        </div>
-        
+    <div className="container-fluid mt-5">
+      <div className="container card text-center p-4" style={{ borderRadius: "10px", boxShadow: "0 0 15px rgba(0, 0, 0, 0.1)" }}>
+        <h3 className="text-success">You have logged in successfully!</h3>
       </div>
-    </>
+    </div>
   );
 }
 
