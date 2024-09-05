@@ -2,7 +2,7 @@
 
 
 <H1 align="center">
-   React User Authenticat App
+    User Authenticat App
 </H1>
 <p align="center">
   <img width="200" height="" src="https://github.com/letswriteaprogram/Auth_Authentication_App/blob/main/public/logo192.png?raw=true">
